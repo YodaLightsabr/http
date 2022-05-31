@@ -3,10 +3,12 @@
   "name": "http",
   "title": "HTTP Client",
   "description": "HTTP client for Raycast",
-  "icon": "command-icon.png",
+  "icon": "icon.png",
   "author": "Yoda",
   "categories": [
-    "Developer Tools"
+    "Developer Tools",
+    "Web",
+    "Productivity"
   ],
   "license": "MIT",
   "commands": [
