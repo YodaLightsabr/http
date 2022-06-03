@@ -210,11 +210,13 @@ export function SendRequest ({ method, url, headers, body }: { method: Method | 
 
   return (
     <Detail navigationTitle={`${method} Request`} isLoading={loading} markdown={
-      response.isJson ?
-      '```json\n' + JSON.stringify(JSON.parse(response.text), null, 4) + '\n```'
-      : (response.isText ? response.text : (
-        response.isImage ? generateMarkdownForImage(response.raw, response.extension) : `Unable to decode binary file with extension \`${response.extension || 'Loading...'}\`. You could try opening it in ${application ? '**' + application.prettyName + '**' : 'a supported application'}.`
-      ))
+      response.status ? (
+        response.isJson ?
+        '```json\n' + JSON.stringify(JSON.parse(response.text), null, 4) + '\n```'
+        : (response.isText ? response.text : (
+          response.isImage ? generateMarkdownForImage(response.raw, response.extension) : `Unable to decode binary file with extension \`${response.extension || 'Loading...'}\`. You could try opening it in ${application ? '**' + application.prettyName + '**' : 'a supported application'}.`
+        ))
+      ) : "## Loading..."
     } actions={
       <ActionPanel>
         {response.status ?
